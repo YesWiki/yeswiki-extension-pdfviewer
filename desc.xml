@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin name="pdfviewer" version="1.0.0" active="1">
+  <author>Adrien Cheype</author>
+  <label>PdfViewer</label>
+  <desc>Affiche un fichier PDF du wiki dans une visionneuse intégrée, basée sur la bibliothèque libre PDF.js de Mozilla.</desc>
+</plugin>

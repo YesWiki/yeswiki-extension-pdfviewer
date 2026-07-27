@@ -1,0 +1,35 @@
+{#
+  Three possible layouts, carried over from the original action:
+   - floated (pull-left / pull-right): a wrapper sets the frame size and carries the
+     positioning class;
+   - sized (largeurmax / hauteurmax): a wrapper carries the maximums;
+   - plain: a single block, which carries the requested class.
+#}
+{% set styleForSize = manageSize ? "max-width:#{maxWidth}px;max-height:#{maxHeight}px;" : '' %}
+{% set isPulled = 'pull-right' in class|split(' ') or 'pull-left' in class|split(' ') %}
+{% set hasWrapper = isPulled or manageSize %}
+
+{% if hasWrapper %}
+  <div class="{{ class }}" style="
+    {%- if isPulled -%}
+      {%- if manageSize -%}
+        width:{{ maxWidth }}px;height:{{ maxHeight }}px;max-width:100%;
+      {%- else -%}
+        width:100%;
+      {%- endif -%}
+    {%- else -%}
+      {{- styleForSize -}}
+    {%- endif -%}">
+{% endif %}
+
+<div class="{{ hasWrapper ? '' : class }} embed-responsive {{ shape }}" style="{{ styleForSize }}">
+  <span class="throbber pdfviewer-loading"></span>
+  <iframe
+    src="{{ viewerUrl }}?file={{ url|e('url') }}"
+    class="embed-responsive-item" frameborder="0" allowfullscreen
+    onload="event.target.parentNode.querySelector('.pdfviewer-loading').style.display='none';"
+    >
+  </iframe>
+</div>
+
+{% if hasWrapper %}</div>{% endif %}

@@ -1,0 +1,31 @@
+/*
+  An iframe has no intrinsic aspect ratio: the container's height is therefore
+  derived from a padding-bottom expressed as a percentage of its width.
+  embed-responsive and embed-responsive-item come from Bootstrap, provided by the theme.
+*/
+
+.embed-responsive.pdfviewer-portrait,
+.embed-responsive.pdfviewer-paysage,
+.embed-responsive.pdfviewer-carre {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.embed-responsive.pdfviewer-portrait {
+    padding-bottom: 138%;
+}
+
+.embed-responsive.pdfviewer-paysage {
+    padding-bottom: 75%;
+}
+
+.embed-responsive.pdfviewer-carre {
+    padding-bottom: 100%;
+}
+
+.pdfviewer-loading {
+    position: absolute;
+    z-index: 1000;
+    top: 30vh;
+    left: 48%;
+}

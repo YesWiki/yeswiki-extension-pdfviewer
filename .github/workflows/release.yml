@@ -40,7 +40,10 @@ jobs:
 
       - name: Install JS dependencies
         if: hashFiles('package.json') != ''
-        run: yarn install
+        # --ignore-optional skips @napi-rs/canvas, 61 MB of native binaries that
+        # pdfjs-dist only needs to render PDFs from Node. The viewer runs in the
+        # browser, so they are never used.
+        run: yarn install --ignore-optional
 
       - name: Create release archive
         run: |

@@ -49,12 +49,18 @@ so removing this extension restores the previous behaviour.
 
 ```bash
 cd tools/pdfviewer
-yarn install
+yarn install --ignore-optional
 ```
 
 `yarn install` installs `pdfjs-dist`, then runs `scripts/assemble-pdfjs.mjs`, which
 builds `javascripts/vendor/pdfjs-dist/`. That directory is **not versioned**, so it
 has to be regenerated on every environment, development and production alike.
+
+`--ignore-optional` skips `@napi-rs/canvas`, an optional dependency of `pdfjs-dist`
+that renders PDFs to images from Node. This extension only copies static files out of
+the package and runs the viewer in the browser, so those 61 MB of native binaries are
+never used. The flag has to be typed: yarn 1 cannot persist it in `.yarnrc`, where
+boolean options are appended as a positional argument and abort the command.
 
 If the assembled directory is missing, the action renders an explicit message rather
 than an empty frame.
@@ -63,7 +69,7 @@ than an empty frame.
 
 ```bash
 cd tools/pdfviewer
-yarn upgrade pdfjs-dist --latest
+yarn upgrade pdfjs-dist --latest --ignore-optional
 ```
 
 `yarn.lock` is the single source of truth: the script reads the version installed in

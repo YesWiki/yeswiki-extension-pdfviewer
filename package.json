@@ -1,26 +1,27 @@
 {
-    "name": "yeswiki-extension-pdfviewer",
-    "version": "1.0.0",
-    "private": true,
-    "description": "Affiche un fichier PDF du wiki dans une visionneuse intégrée, basée sur PDF.js.",
-    "main": "index.js",
-    "scripts": {
-        "postinstall": "node scripts/assemble-pdfjs.mjs",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/yeswiki/yeswiki-extension-pdfviewer.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "AGPL-3.0",
-    "bugs": {
-        "url": "https://github.com/yeswiki/yeswiki-extension-pdfviewer/issues"
-    },
-    "homepage": "https://github.com/yeswiki/yeswiki-extension-pdfviewer#readme",
-    "dependencies": {
-        "fflate": "^0.8.3",
-        "pdfjs-dist": "^6.1.200"
-    }
+  "name": "yeswiki-extension-pdfviewer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Affiche un fichier PDF du wiki dans une visionneuse intégrée, basée sur PDF.js.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "yarn build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node scripts/assemble-pdfjs.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeswiki/yeswiki-extension-pdfviewer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/yeswiki/yeswiki-extension-pdfviewer/issues"
+  },
+  "homepage": "https://github.com/yeswiki/yeswiki-extension-pdfviewer#readme",
+  "dependencies": {
+    "fflate": "^0.8.3",
+    "pdfjs-dist": "^6.1.200"
+  }
 }
